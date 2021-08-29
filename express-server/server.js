@@ -4,7 +4,6 @@ const keys = require('./config/keys.js');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const User =require('./models/user');
-const {resolve} = require('path');
 const PORT=process.env.PORT || 5000;
 
 mongoose.connect(keys.MongoDB_URI,{
@@ -20,8 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 app.get('/',(req,res) => {
-    const path = resolve('public'+ '/index.html');
-    res.sendFile(path);
+    res.send('Hello Server!');
 })
 
 app.get('/about',(req,res) => {
